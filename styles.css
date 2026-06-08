@@ -1,0 +1,274 @@
+@font-face {
+  font-family: "Gaegu";
+  src: url("assets/fonts/Gaegu-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gaegu";
+  src: url("assets/fonts/Gaegu-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  color-scheme: light;
+  --cream: #faf6ee;
+  --brown: #3b2a1a;
+  --sage: #8faf82;
+  --blush: #e8c4b0;
+  --muted-brown: #7a6050;
+  --dot: rgba(122, 96, 80, 0.18);
+  --shadow: 0 18px 40px rgba(59, 42, 26, 0.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #d8d2cc;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--brown);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #d8d2cc;
+}
+
+a {
+  color: inherit;
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: 28px;
+  background:
+    radial-gradient(circle, var(--dot) 2.2px, transparent 2.3px) 0 0 / 35px 35px,
+    var(--cream);
+}
+
+.home-shell {
+  display: grid;
+  place-items: center;
+}
+
+.sheet {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  background: rgba(250, 246, 238, 0.86);
+  border-radius: 34px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+.home-sheet {
+  min-height: min(880px, calc(100vh - 56px));
+  max-width: 760px;
+  padding: 30px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.home-topbar,
+.content-topbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.micro-label {
+  margin: 0;
+  color: var(--muted-brown);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+
+.mini-link {
+  text-decoration: none;
+  color: var(--muted-brown);
+  font-size: 0.95rem;
+}
+
+.hero-mark {
+  margin-top: 90px;
+}
+
+.hero-mark img,
+.flower-mark {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  opacity: 0.78;
+}
+
+.hero-copy {
+  margin-top: 28px;
+  max-width: 520px;
+}
+
+.hero-copy h1,
+.content-header h1 {
+  margin: 0;
+  font-family: "Gaegu", sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 4.8rem);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+}
+
+.hero-copy p,
+.content-header p,
+.content-block p,
+.content-block li,
+.footer-note {
+  font-size: clamp(1rem, 2vw, 1.08rem);
+  line-height: 1.65;
+  color: rgba(59, 42, 26, 0.72);
+}
+
+.hero-copy p {
+  margin: 28px auto 0;
+  max-width: 460px;
+}
+
+.stack-actions {
+  width: min(100%, 460px);
+  margin-top: auto;
+  padding-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.pill-button {
+  width: 100%;
+  padding: 18px 24px;
+  border-radius: 999px;
+  background: var(--brown);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 10px 22px rgba(59, 42, 26, 0.16);
+}
+
+.pill-button:hover,
+.pill-button:focus-visible {
+  background: #2f2115;
+}
+
+.text-action {
+  text-decoration: none;
+  color: rgba(59, 42, 26, 0.66);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.footer-note {
+  margin: 34px 0 0;
+  max-width: 480px;
+}
+
+.footer-note a,
+.content-block a,
+.content-header a {
+  color: var(--brown);
+  text-decoration-thickness: 1px;
+}
+
+.content-sheet {
+  max-width: 860px;
+  padding: 24px;
+}
+
+.content-header {
+  padding: 18px 10px 6px;
+  text-align: center;
+}
+
+.content-header .flower-mark {
+  display: block;
+  margin: 8px auto 20px;
+}
+
+.content-header p {
+  max-width: 640px;
+  margin: 20px auto 0;
+}
+
+.content-block {
+  margin-top: 18px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.64);
+  border-radius: 22px;
+}
+
+.content-block h2 {
+  margin: 0 0 10px;
+  font-family: "Gaegu", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  line-height: 0.98;
+}
+
+.content-block p,
+.content-block ul {
+  margin: 0;
+}
+
+.content-block ul {
+  padding-left: 1.2rem;
+}
+
+.content-block li + li {
+  margin-top: 0.5rem;
+}
+
+.contact-block {
+  background: rgba(143, 175, 130, 0.12);
+}
+
+@media (max-width: 700px) {
+  .page-shell {
+    padding: 14px;
+  }
+
+  .sheet {
+    border-radius: 28px;
+  }
+
+  .home-sheet {
+    min-height: calc(100vh - 28px);
+    padding: 22px 20px 32px;
+  }
+
+  .hero-mark {
+    margin-top: 72px;
+  }
+
+  .content-sheet {
+    padding: 18px;
+  }
+
+  .content-topbar,
+  .home-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .content-block {
+    padding: 20px;
+    border-radius: 18px;
+  }
+}
