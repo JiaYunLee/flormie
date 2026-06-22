@@ -10,7 +10,7 @@
 </head>
 <body>
   <main class="landing-page" data-node-id="427:8175">
-    <section class="landing-hero" data-node-id="427:8177">
+    <section class="landing-hero scroll-reveal" data-node-id="427:8177">
       <header class="landing-title" data-node-id="427:8178">
         <img
           class="landing-logo"
@@ -44,7 +44,7 @@
       </div>
     </section>
 
-    <section class="principle-section" data-node-id="427:8225">
+    <section class="principle-section scroll-reveal" data-node-id="427:8225">
       <header class="principle-copy" data-node-id="427:8227">
         <h2 class="principle-heading" data-node-id="427:8228">Collect a flower</h2>
         <p class="principle-text" data-node-id="427:8229">
@@ -52,18 +52,22 @@
           (or flormie) on the canvas.
         </p>
       </header>
-      <div class="principle-visual-frame" data-node-id="427:8230">
-        <img
-          class="principle-visual"
-          src="assets/images/flormie-collect-image.png"
-          alt="Collect a flower flow"
-          width="720"
-          height="720"
-        >
+      <div class="principle-visual-frame principle-visual-frame--video" data-node-id="427:8230">
+        <video
+          class="feature-video feature-video--collect"
+          src="assets/videos/collect.mp4"
+          poster="assets/images/flormie-collect-image.png"
+          muted
+          playsinline
+          loop
+          autoplay
+          preload="metadata"
+          aria-label="Collect a flower feature video"
+        ></video>
       </div>
     </section>
 
-    <section class="principle-section" data-node-id="427:8233">
+    <section class="principle-section scroll-reveal" data-node-id="427:8233">
       <header class="principle-copy" data-node-id="427:8235">
         <h2 class="principle-heading" data-node-id="427:8236">Interactive canvas</h2>
         <p class="principle-text" data-node-id="427:8237">
@@ -73,18 +77,24 @@
           reinforces a sense of progress and encourages continued exploration.
         </p>
       </header>
-      <div class="principle-visual-frame" data-node-id="427:8238">
-        <img
-          class="principle-visual"
-          src="assets/images/flormie-canvas-image.png"
-          alt="Interactive canvas preview"
-          width="720"
-          height="720"
-        >
+      <div class="principle-visual-frame principle-visual-frame--video" data-node-id="427:8238">
+        <div class="feature-video-shell feature-video-shell--canvas">
+          <video
+            class="flormie-interactive-video"
+            src="assets/videos/canvas.mov"
+            poster="assets/images/flormie-canvas-image.png"
+            muted
+            playsinline
+            loop
+            autoplay
+            preload="metadata"
+            aria-label="Interactive canvas feature video"
+          ></video>
+        </div>
       </div>
     </section>
 
-    <section class="principle-section" data-node-id="427:8241">
+    <section class="principle-section scroll-reveal" data-node-id="427:8241">
       <header class="principle-copy" data-node-id="427:8243">
         <h2 class="principle-heading" data-node-id="427:8244">Flower card</h2>
         <p class="principle-text" data-node-id="427:8245">
@@ -93,18 +103,22 @@
           time.
         </p>
       </header>
-      <div class="principle-visual-frame" data-node-id="427:8246">
-        <img
-          class="principle-visual"
-          src="assets/images/flormie-card-image.png"
-          alt="Flower card preview"
-          width="720"
-          height="720"
-        >
+      <div class="principle-visual-frame principle-visual-frame--video" data-node-id="427:8246">
+        <video
+          class="feature-video feature-video--card"
+          src="assets/videos/card.mov"
+          poster="assets/images/flormie-card-image.png"
+          muted
+          playsinline
+          loop
+          autoplay
+          preload="metadata"
+          aria-label="Flower card feature video"
+        ></video>
       </div>
     </section>
 
-    <section class="principle-section principle-section--views" data-node-id="427:8249">
+    <section class="principle-section principle-section--views scroll-reveal" data-node-id="427:8249">
       <header class="principle-copy" data-node-id="427:8251">
         <h2 class="principle-heading" data-node-id="427:8252">Different views</h2>
         <p class="principle-text" data-node-id="427:8253">
@@ -124,7 +138,7 @@
       </div>
     </section>
 
-    <section class="landing-closing" data-node-id="427:8500">
+    <section class="landing-closing scroll-reveal" data-node-id="427:8500">
       <header class="landing-title landing-title--closing" data-node-id="427:8578">
         <img
           class="landing-logo"
@@ -158,7 +172,7 @@
       </div>
     </section>
 
-    <footer class="landing-footer" data-node-id="427:8592">
+    <footer class="landing-footer scroll-reveal" data-node-id="427:8592">
       <a href="privacy.html" data-node-id="427:8594">privacy policy</a>
       <a href="support.html" data-node-id="427:8595">support</a>
       <p data-node-id="427:8597">
@@ -166,5 +180,39 @@
       </p>
     </footer>
   </main>
+  <script>
+    (() => {
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (!reveals.length) {
+        return;
+      }
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        reveals.forEach((element) => element.classList.add("is-visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.18,
+          rootMargin: "0px 0px -8% 0px"
+        }
+      );
+
+      reveals.forEach((element) => observer.observe(element));
+    })();
+  </script>
 </body>
 </html>
